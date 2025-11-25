@@ -20,12 +20,12 @@ def multiply(a, b):
     return a * b
 
 def divide(a, b):
-    try:
-        return a / b
-    except Exception as e:
+    if b == 0:
+        err = ValueError("Cannot divide by zero")
         if sentry_sdk:
-            sentry_sdk.capture_exception(e)
-        raise
+            sentry_sdk.capture_exception(err)
+        raise err
+    return a / b
 
 def sine(x):
     return math.sin(x)
