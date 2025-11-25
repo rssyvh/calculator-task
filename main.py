@@ -1,9 +1,11 @@
-import time
+from flask import Flask
 from calculator import add
 
-print("Calculator deployed on Liara!")
-print(add(2, 3))
+app = Flask(__name__)
 
-# Keep app alive
-while True:
-    time.sleep(10)
+@app.route("/")
+def home():
+    return f"Calculator App is running! 2 + 3 = {add(2, 3)}"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000)
