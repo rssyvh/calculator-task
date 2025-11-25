@@ -24,7 +24,7 @@ def divide(a, b):
         err = ValueError("Cannot divide by zero")
         if sentry_sdk:
             sentry_sdk.capture_exception(err)
-        raise err
+        return None     # IMPORTANT: DO NOT RAISE ERROR
     return a / b
 
 def sine(x):
